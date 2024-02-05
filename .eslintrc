@@ -1,0 +1,63 @@
+{
+    "env": { "browser": true },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "plugins": ["@typescript-eslint"],
+    "extends": ["plugin:@typescript-eslint/recommended"],
+    "rules": {
+        "@typescript-eslint/no-floating-promises": "error",
+        // False-positive on overload syntax
+        "no-dupe-class-members": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "no-void": "error",
+        // Replace no-constant-condition with no-unnecessary-condition
+        "no-constant-condition": "off",
+        "@typescript-eslint/no-unnecessary-condition": [
+            "warn",
+            { "allowConstantLoopConditions": true }
+        ],
+
+        // Allow `constructor(public propName) {}` shorthand
+        "no-empty-function": ["warn", { "allow": ["constructors"] }],
+
+        "camelcase": "off",
+        "object-shorthand": "warn",
+        "no-else-return": "warn",
+        "prefer-spread": "warn", //Use func(...array), not func.apply(this, array);
+        "prefer-rest-params": "warn", //Use `function (...args)`, not `arguments`
+        "no-return-assign": "warn",
+        "no-unneeded-ternary": "warn",
+        "no-unused-expressions": [
+            "error",
+            {
+                "allowTernary": true,
+                "allowShortCircuit": true
+            }
+        ],
+        "@typescript-eslint/naming-convention": [
+            "warn",
+            // could add { selector: default, format: Pascal, camel, UPPER }
+            //   to ban snake_case, but double underscores aren't support right now
+            // https://github.com/typescript-eslint/typescript-eslint/issues/1712
+            {
+                "selector": "typeLike",
+                "format": ["PascalCase"],
+                "leadingUnderscore": "allow",
+                "trailingUnderscore": "allow"
+            }
+        ],
+
+        // TS only rules
+        "@typescript-eslint/adjacent-overload-signatures": "warn",
+        "@typescript-eslint/array-type": [
+            "warn",
+            { "default": "array-simple" }
+        ],
+        "@typescript-eslint/unified-signatures": "error"
+    }
+}

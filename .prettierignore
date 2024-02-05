@@ -1,0 +1,8 @@
+package.json
+package-lock.json
+dist
+build
+index.html
+pnpm-lock.yaml
+./rust
+./zig

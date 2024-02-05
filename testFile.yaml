@@ -1,0 +1,18 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+# new Date(new Date("yourDate").getTime() + 7.776e+9).toISOString() - bumps the date 90 days
+ignore:
+    SNYK-JS-SEMVER-3247795:
+        - "* > semver":
+                reason: >-
+                    Unable to update transitive dependency.
+                expires: 2024-05-05T00:00:00.007Z
+                created: 2023-07-10T00:00:00.007Z
+    SNYK-JS-WORDWRAP-3149973:
+        - "jest@27.5.1 > * > word-wrap":
+                reason: >-
+                    Unable to update transitive dependency.
+                expires: 2024-05-05T00:00:00.007Z
+                created: 2023-07-10T00:00:00.007Z
+patch: {}
